@@ -1,0 +1,182 @@
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--black) 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 1s ease, visibility 1s ease;
+}
+
+.loading-screen.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loading-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.water-wave {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+
+.wave-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.wave-path {
+  animation: wave-motion 3s ease-in-out infinite;
+}
+
+.wave-path-2 {
+  animation: wave-motion 3s ease-in-out infinite 0.5s;
+  opacity: 0.6;
+}
+
+.wave-path-3 {
+  animation: wave-motion 3s ease-in-out infinite 1s;
+  opacity: 0.4;
+}
+
+@keyframes wave-motion {
+  0%, 100% {
+    transform: translateX(0) translateY(0);
+  }
+  25% {
+    transform: translateX(-20px) translateY(-10px);
+  }
+  50% {
+    transform: translateX(0) translateY(-20px);
+  }
+  75% {
+    transform: translateX(20px) translateY(-10px);
+  }
+}
+
+.logo {
+  text-align: center;
+  animation: logo-fade-in 2s ease-out;
+}
+
+.logo-text {
+  font-family: var(--font-family);
+  font-size: 3rem;
+  font-weight: var(--font-weight-black);
+  color: var(--white);
+  margin: 0;
+  letter-spacing: 0.05em;
+  text-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
+  animation: logo-pulse 2s ease-in-out infinite;
+}
+
+@keyframes logo-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes logo-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.droplet {
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  animation: droplet-fall 2s ease-in-out infinite;
+}
+
+.droplet-svg {
+  width: 60px;
+  height: 60px;
+}
+
+.droplet-path {
+  animation: droplet-shake 2s ease-in-out infinite;
+}
+
+@keyframes droplet-fall {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(20px);
+  }
+}
+
+@keyframes droplet-shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+@media (max-width: 768px) {
+  .water-wave {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .logo-text {
+    font-size: 2.5rem;
+  }
+  
+  .droplet-svg {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .droplet {
+    top: -25px;
+    right: -25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .water-wave {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .logo-text {
+    font-size: 2rem;
+  }
+  
+  .droplet-svg {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .droplet {
+    top: -20px;
+    right: -20px;
+  }
+}

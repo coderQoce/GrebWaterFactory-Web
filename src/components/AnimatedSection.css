@@ -1,0 +1,137 @@
+.animated-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animated-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fade In Animation */
+.animated-section.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.animated-section.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Slide In Left */
+.animated-section.slide-in-left {
+  opacity: 0;
+  transform: translateX(-50px);
+}
+
+.animated-section.slide-in-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Slide In Right */
+.animated-section.slide-in-right {
+  opacity: 0;
+  transform: translateX(50px);
+}
+
+.animated-section.slide-in-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Scale In */
+.animated-section.scale-in {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.animated-section.scale-in.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Stagger Up Animation */
+.animated-section.stagger-up {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+.animated-section.stagger-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger animations for multiple elements */
+.animated-section.stagger-up.visible:nth-child(1) {
+  transition-delay: 0ms;
+}
+
+.animated-section.stagger-up.visible:nth-child(2) {
+  transition-delay: 100ms;
+}
+
+.animated-section.stagger-up.visible:nth-child(3) {
+  transition-delay: 200ms;
+}
+
+.animated-section.stagger-up.visible:nth-child(4) {
+  transition-delay: 300ms;
+}
+
+.animated-section.stagger-up.visible:nth-child(5) {
+  transition-delay: 400ms;
+}
+
+.animated-section.stagger-up.visible:nth-child(6) {
+  transition-delay: 500ms;
+}
+
+.animated-section.stagger-up.visible:nth-child(7) {
+  transition-delay: 600ms;
+}
+
+.animated-section.stagger-up.visible:nth-child(8) {
+  transition-delay: 700ms;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .animated-section {
+    transition-duration: 0.6s;
+  }
+  
+  .animated-section.slide-in-left {
+    transform: translateX(-30px);
+  }
+  
+  .animated-section.slide-in-right {
+    transform: translateX(30px);
+  }
+  
+  .animated-section.fade-in,
+  .animated-section.stagger-up {
+    transform: translateY(20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .animated-section {
+    transition-duration: 0.5s;
+  }
+  
+  .animated-section.slide-in-left {
+    transform: translateX(-20px);
+  }
+  
+  .animated-section.slide-in-right {
+    transform: translateX(20px);
+  }
+  
+  .animated-section.fade-in,
+  .animated-section.stagger-up {
+    transform: translateY(15px);
+  }
+}
