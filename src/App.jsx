@@ -1,36 +1,26 @@
-import React, { useEffect, useState } from 'react';
-import LoadingScreen from './components/LoadingScreen';
+import React from 'react';
 import Hero from './components/Hero';
 import About from './components/About';
+import MeetDirector from './components/MeetDirector';
 import Products from './components/Products';
-import WhyChooseUs from './components/WhyChooseUs';
-import Testimonials from './components/Testimonials';
+import Delivery from './components/Delivery';
+import CustomerFeedback from './components/CustomerFeedback';
+import CSR from './components/CSR';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import './App.css';
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    // Hide loading screen after 3 seconds
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <div className="App">
-      {isLoading && <LoadingScreen />}
-
       <main>
         <Hero />
         <About />
+        <MeetDirector />
         <Products />
-        <WhyChooseUs />
-        <Testimonials />
+        <Delivery />
+        <CustomerFeedback />
+        <CSR />
         <Contact />
       </main>
 

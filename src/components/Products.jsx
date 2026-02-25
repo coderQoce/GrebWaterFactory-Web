@@ -1,94 +1,252 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import SachetImage from '../assets/images/BT.jpg';
+import BottledImage from '../assets/images/BT.jpg';
+import BottleProductionImage from '../assets/images/BT.jpg';
+import LabelMakerImage from '../assets/images/BT.jpg';
 import './Products.css';
 
 const Products = () => {
+  const [activeFilter, setActiveFilter] = useState('all');
+  const sectionRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Additional observers for different sections
+  useEffect(() => {
+    if (!isVisible) return;
+
+    // Animate header
+    const headerObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    // Animate filter bar
+    const filterObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    // Animate CTA
+    const ctaObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    const header = document.querySelector('.products-header');
+    const filter = document.querySelector('.filter-wrapper');
+    const cta = document.querySelector('.products-cta');
+
+    if (header) headerObserver.observe(header);
+    if (filter) filterObserver.observe(filter);
+    if (cta) ctaObserver.observe(cta);
+
+    return () => {
+      if (header) headerObserver.unobserve(header);
+      if (filter) filterObserver.unobserve(filter);
+      if (cta) ctaObserver.unobserve(cta);
+    };
+  }, [isVisible]);
+
   const products = [
     {
       id: 1,
-      title: 'Bottled Water',
-      description: 'Premium quality water in convenient 500ml and 1L bottles. Perfect for daily hydration and on-the-go refreshment.',
-      icon: (
-        <svg viewBox="0 0 24 24" className="product-icon">
-          <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"
-            fill="currentColor" />
-        </svg>
-      ),
-      features: ['500ml & 1L sizes', 'BPA-free bottles', 'Recyclable packaging']
+      name: 'Sachet Water',
+      category: 'sachet',
+      description: 'Pure refreshment in every sip',
+      fullDescription: 'Convenient 250ml sachets perfect for events, offices, and everyday hydration. Our sachets are produced under strict quality controls.',
+      image: SachetImage,
+      specs: ['250ml volume', 'Food-grade material', '100 sachets/pack'],
+
     },
     {
       id: 2,
-      title: 'Sachet Water',
-      description: 'Affordable and convenient water sachets for quick hydration. Ideal for events, offices, and large gatherings.',
-      icon: (
-        <svg viewBox="0 0 24 24" className="product-icon">
-          <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l3.59-3.59L17 12l-5 5z"
-            fill="currentColor" />
-        </svg>
-      ),
-      features: ['250ml sachets', 'Cost-effective', 'Easy storage']
+      name: 'Premium Bottled',
+      category: 'bottled',
+      description: 'Crystal clear bottled water',
+      fullDescription: 'Premium quality water in BPA-free bottles. Available in 500ml and 1L sizes for your daily hydration needs.',
+      image: BottledImage,
+      specs: ['500ml & 1L options', 'BPA-free', 'Recyclable'],
+
     },
     {
       id: 3,
-      title: 'Bulk Supply',
-      description: 'Large-scale water solutions for businesses, events, and institutions. Custom packages available.',
-      icon: (
-        <svg viewBox="0 0 24 24" className="product-icon">
-          <path d="M20 6h-2.18c.11-.31.18-.65.18-1a2.996 2.996 0 0 0-5.5-1.65l-.5.67-.5-.68C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2z"
-            fill="currentColor" />
-        </svg>
-      ),
-      features: ['5L & 20L containers', 'Delivery service', 'Volume discounts']
+      name: 'Bottle Manufacturing',
+      category: 'manufacturing',
+      description: 'Custom bottle production',
+      fullDescription: 'End-to-end bottle manufacturing services for businesses. We create custom designs with premium quality materials.',
+      image: BottleProductionImage,
+      specs: ['Custom molds', 'Bulk orders', 'Quality certified'],
+
     },
     {
       id: 4,
-      title: 'Home Delivery',
-      description: 'Regular subscription service delivering fresh water to your doorstep. Never run out of pure water again.',
-      icon: (
-        <svg viewBox="0 0 24 24" className="product-icon">
-          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
-            fill="currentColor" />
-        </svg>
-      ),
-      features: ['Weekly delivery', 'Flexible scheduling', 'Subscription plans']
+      name: 'Label Design Studio',
+      category: 'labels',
+      description: 'Professional label printing',
+      fullDescription: 'Stand out with our custom label design and printing services. We create eye-catching designs that tell your brand story.',
+      image: LabelMakerImage,
+      specs: ['Custom designs', 'Waterproof', 'Bulk printing'],
+
     }
   ];
 
+  const filters = [
+    { value: 'all', label: 'All Products' },
+    { value: 'sachet', label: 'Sachet' },
+    { value: 'bottled', label: 'Bottled' },
+    { value: 'manufacturing', label: 'Manufacturing' },
+    { value: 'labels', label: 'Labels' }
+  ];
+
+  const filteredProducts = activeFilter === 'all'
+    ? products
+    : products.filter(product => product.category === activeFilter);
+
+  const handleInquiry = (productName) => {
+    const phoneNumber = '2348012345678';
+    const message = encodeURIComponent(`Hello, I'm interested in your ${productName}. Please provide more information.`);
+    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+  };
+
   return (
-    <section id="products" className="products section">
-      <div className="container">
-        <div className="section-header text-center">
-          <h2 className="section-title">Our Products</h2>
-          <div className="section-divider center"></div>
-          <p className="section-subtitle">
-            Discover our range of premium water products designed to meet every need
+    <section id="products" className="products" ref={sectionRef}>
+      {/* Background Pattern */}
+      <div className="products-pattern">
+        <div className="pattern-circle"></div>
+        <div className="pattern-circle"></div>
+        <div className="pattern-circle"></div>
+      </div>
+
+      <div className="products-container">
+        {/* Section Header */}
+        <div className="products-header">
+          <span className="products-subtitle">What We Offer</span>
+          <h2 className="products-title">
+            Premium Water Solutions
+            <span className="title-accent">For Every Need</span>
+          </h2>
+          <p className="products-description">
+            From refreshing sachets to custom manufacturing, we provide comprehensive water solutions
+            that meet the highest standards of quality and purity.
           </p>
         </div>
 
+        {/* Filter Bar */}
+        <div className="filter-wrapper">
+          <div className="filter-bar">
+            {filters.map((filter) => (
+              <button
+                key={filter.value}
+                className={`filter-btn ${activeFilter === filter.value ? 'active' : ''}`}
+                onClick={() => setActiveFilter(filter.value)}
+              >
+                {filter.label}
+              </button>
+            ))}
+          </div>
+          <div className="filter-indicator"></div>
+        </div>
+
+        {/* Products Grid */}
         <div className="products-grid">
-          {products.map((product, index) => (
-            <div key={product.id} className="product-card">
-              <div className="card-icon">
-                {product.icon}
+          {filteredProducts.map((product, index) => (
+            <div
+              key={product.id}
+              className={`product-card ${isVisible ? 'visible' : ''}`}
+              style={{ transitionDelay: `${index * 0.1}s` }}
+            >
+              {/* Card Badge */}
+              {product.badge && (
+                <div className="card-badge">
+                  <span>{product.badge}</span>
+                </div>
+              )}
+
+              {/* Card Icon/Emoji */}
+              <div className="card-icon-wrapper">
+                <span className="card-emoji">{product.icon}</span>
               </div>
+
+              {/* Card Image */}
+              <div className="card-image">
+                <img src={product.image} alt={product.name} />
+                <div className="image-overlay"></div>
+              </div>
+
+              {/* Card Content */}
               <div className="card-content">
-                <h3 className="card-title">{product.title}</h3>
+                <h3 className="card-title">{product.name}</h3>
                 <p className="card-description">{product.description}</p>
-                <ul className="card-features">
-                  {product.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="feature-item">
-                      <svg viewBox="0 0 24 24" className="check-icon">
-                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" fill="var(--primary)" />
+
+                {/* Expandable Details */}
+                <div className="card-details">
+                  <p className="full-description">{product.fullDescription}</p>
+
+                  <div className="specs-list">
+                    {product.specs.map((spec, i) => (
+                      <div key={i} className="spec-item">
+                        <span className="spec-dot">●</span>
+                        <span>{spec}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="card-footer">
+                    <span className="product-price">{product.price}</span>
+                    <button
+                      className="inquiry-btn"
+                      onClick={() => handleInquiry(product.name)}
+                    >
+                      <span>Inquire Now</span>
+                      <svg viewBox="0 0 24 24" className="btn-icon">
+                        <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" fill="currentColor" />
                       </svg>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-                <button className="btn btn-primary card-btn">
-                  Order Now
-                </button>
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           ))}
+        </div>
+
+        {/* CTA Banner */}
+        <div className="products-cta">
+          <div className="cta-content">
+            <h3>Need Custom Solutions?</h3>
+            <p>We offer tailored water solutions for businesses, events, and organizations</p>
+            <button className="cta-btn" onClick={() => handleInquiry('custom solutions')}>
+              Contact Our Team
+            </button>
+          </div>
         </div>
       </div>
     </section>

@@ -10,10 +10,12 @@
 }
 
 .navbar.scrolled {
+  position: fixed;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
   padding: 0.5rem 0;
+  border-bottom: none;
 }
 
 .navbar.fixed {
@@ -32,8 +34,9 @@
 .nav-logo .logo-text {
   font-family: var(--font-family);
   font-weight: var(--font-weight-black);
-  font-size: 2rem;
-  color: var(--primary);
+  font-size: 1.8rem;
+  color: var(--primary-dark);
+  text-decoration: none;
   margin: 0;
   letter-spacing: 0.05em;
   transition: color var(--transition-fast);
@@ -64,7 +67,7 @@
   font-family: var(--font-family);
   font-weight: var(--font-weight-medium);
   font-size: 1rem;
-  color: var(--white);
+  color: var(--black);
   text-decoration: none;
   position: relative;
   transition: color var(--transition-fast);
@@ -78,12 +81,12 @@
 .nav-link::after {
   content: '';
   position: absolute;
-  bottom: 0;
+  bottom: -2px;
   left: 0;
   width: 0;
   height: 2px;
-  background: var(--primary);
-  transition: width var(--transition-normal);
+  background: var(--primary-dark);
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav-link:hover::after {
@@ -105,7 +108,7 @@
 .hamburger-line {
   width: 25px;
   height: 3px;
-  background: var(--white);
+  background: var(--black);
   border-radius: 2px;
   transition: all var(--transition-normal);
 }

@@ -72,13 +72,18 @@ const Navbar = () => {
                 </a>
               </li>
               <li className="nav-item">
-                <a href="#why-us" className="nav-link" onClick={(e) => { e.preventDefault(); scrollToSection('why-us'); }}>
-                  Why Choose Us
+                <a href="#delivery" className="nav-link" onClick={(e) => { e.preventDefault(); scrollToSection('delivery'); }}>
+                  Delivery
                 </a>
               </li>
               <li className="nav-item">
-                <a href="#testimonials" className="nav-link" onClick={(e) => { e.preventDefault(); scrollToSection('testimonials'); }}>
-                  Testimonials
+                <a href="#customer-feedback" className="nav-link" onClick={(e) => { e.preventDefault(); scrollToSection('customer-feedback'); }}>
+                  Customer Feedback
+                </a>
+              </li>
+              <li className="nav-item">
+                <a href="#csr" className="nav-link" onClick={(e) => { e.preventDefault(); scrollToSection('csr'); }}>
+                  CSR
                 </a>
               </li>
               <li className="nav-item">
@@ -116,13 +121,18 @@ const Navbar = () => {
               </a>
             </li>
             <li className="mobile-nav-item">
-              <a href="#why-us" className="mobile-nav-link" onClick={(e) => { e.preventDefault(); scrollToSection('why-us'); }}>
-                Why Choose Us
+              <a href="#delivery" className="mobile-nav-link" onClick={(e) => { e.preventDefault(); scrollToSection('delivery'); }}>
+                Delivery
               </a>
             </li>
             <li className="mobile-nav-item">
-              <a href="#testimonials" className="mobile-nav-link" onClick={(e) => { e.preventDefault(); scrollToSection('testimonials'); }}>
-                Testimonials
+              <a href="#customer-feedback" className="mobile-nav-link" onClick={(e) => { e.preventDefault(); scrollToSection('customer-feedback'); }}>
+                Customer Feedback
+              </a>
+            </li>
+            <li className="mobile-nav-item">
+              <a href="#csr" className="mobile-nav-link" onClick={(e) => { e.preventDefault(); scrollToSection('csr'); }}>
+                CSR
               </a>
             </li>
             <li className="mobile-nav-item">

@@ -1,0 +1,262 @@
+/* Meet Directors Section */
+.meet-director {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #FFFFFF 0%, #F0F8FF 100%);
+}
+
+/* Directors Grid - 3 Column Layout */
+.directors-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 60px;
+  padding: 0 20px;
+  gap: 30px;
+}
+
+.director-card {
+  background: transparent;
+  padding: 0;
+  box-shadow: none;
+  transition: none;
+  border: none;
+  text-align: center;
+  flex: 1;
+  max-width: 33.33%;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+
+.director-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.director-card:nth-child(1) {
+  transition-delay: 0.1s;
+}
+
+.director-card:nth-child(3) {
+  transition-delay: 0.2s;
+}
+
+.director-card:nth-child(5) {
+  transition-delay: 0.3s;
+}
+
+.director-card:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.director-divider {
+  width: 1px;
+  height: 80px;
+  background: linear-gradient(to bottom,
+      transparent 0%,
+      rgba(135, 206, 235, 0.3) 20%,
+      rgba(135, 206, 235, 0.5) 50%,
+      rgba(135, 206, 235, 0.3) 80%,
+      transparent 100%);
+  align-self: center;
+  flex-shrink: 0;
+}
+
+.director-image {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.director-photo {
+  position: relative;
+  display: inline-block;
+  max-width: 200px;
+}
+
+.director-avatar {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 8px 25px rgba(70, 130, 180, 0.2));
+  transition: transform 0.3s ease;
+}
+
+.director-avatar:hover {
+  transform: scale(1.05);
+}
+
+.director-info {
+  text-align: center;
+}
+
+.director-name {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #4682B4;
+  margin-bottom: 8px;
+}
+
+.director-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  color: #87CEEB;
+  margin-bottom: 20px;
+}
+
+.director-bio {
+  margin-bottom: 25px;
+}
+
+.director-bio p {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: #666666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.director-achievements {
+  margin-bottom: 25px;
+  text-align: left;
+}
+
+.director-achievements h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #4682B4;
+  margin-bottom: 12px;
+}
+
+.achievements-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.achievements-list li {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: #666666;
+  line-height: 1.5;
+  margin-bottom: 8px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.achievements-list li:before {
+  content: "•";
+  color: #87CEEB;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+.director-quote {
+  text-align: center;
+}
+
+.director-quote blockquote {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: #4682B4;
+  font-style: italic;
+  line-height: 1.6;
+  margin: 0;
+  padding: 15px;
+  background: rgba(135, 206, 235, 0.05);
+  border-radius: 10px;
+  border-left: 4px solid #87CEEB;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .meet-director {
+    padding: 60px 0;
+  }
+
+  .directors-grid {
+    flex-direction: column;
+    gap: 30px;
+    padding: 0 15px;
+  }
+
+  .director-card {
+    max-width: 100%;
+    padding: 25px;
+  }
+
+  .director-divider {
+    display: none;
+  }
+
+  .director-name {
+    font-size: 1.3rem;
+  }
+
+  .director-title {
+    font-size: 0.9rem;
+  }
+
+  .director-bio p {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .meet-director {
+    padding: 40px 0;
+  }
+
+  .directors-grid {
+    gap: 25px;
+    padding: 0 10px;
+  }
+
+  .director-card {
+    padding: 20px;
+  }
+
+  .director-bio p {
+    font-size: 0.8rem;
+  }
+
+  .director-quote blockquote {
+    font-size: 0.8rem;
+    padding: 12px;
+  }
+}
+
+.meet-director {
+  padding: 60px 0;
+}
+
+.director-name {
+  font-size: 1.8rem;
+}
+
+.director-title {
+  font-size: 1rem;
+}
+
+.director-bio p {
+  font-size: 0.95rem;
+}
+
+.director-achievements h4 {
+  font-size: 1.2rem;
+}
+
+.achievements-list li {
+  font-size: 0.9rem;
+}
+
+.director-quote blockquote {
+  font-size: 1rem;
+}
+}

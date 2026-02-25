@@ -1,105 +1,134 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import GrebImage from '../assets/images/greb.jpg';
 import './About.css';
 
 const About = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const [valuesVisible, setValuesVisible] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const aboutSection = document.getElementById('about');
+      const valuesContainer = document.querySelector('.values-written-container');
+
+      if (aboutSection) {
+        const rect = aboutSection.getBoundingClientRect();
+        const isInView = rect.top < window.innerHeight && rect.bottom > 0;
+        setIsVisible(isInView);
+      }
+
+      if (valuesContainer) {
+        const rect = valuesContainer.getBoundingClientRect();
+        const isInView = rect.top < window.innerHeight && rect.bottom > 0;
+        setValuesVisible(isInView);
+      }
+    };
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <section id="about" className="about section">
+    <section id="about" className={`about-section ${isVisible ? 'visible' : ''}`}>
       <div className="container">
-        <div className="about-content">
-          <div className="about-text">
-            <div className="section-header">
-              <h2 className="section-title">About GrebWater</h2>
-              <div className="section-divider"></div>
-            </div>
-            <p className="about-description">
-              Founded with a vision to deliver the purest water to every home and business,
-              GrebWater has become synonymous with quality and reliability in the water industry.
-            </p>
-            <p className="about-description">
-              Our state-of-the-art facility combines advanced purification technology with
-              sustainable practices to ensure every drop meets the highest standards of purity
-              and taste.
-            </p>
-            <div className="about-stats">
-              <div className="stat-item">
-                <div className="stat-number">10+</div>
-                <div className="stat-label">Years Experience</div>
-              </div>
-              <div className="stat-item">
-                <div className="stat-number">50K+</div>
-                <div className="stat-label">Happy Customers</div>
-              </div>
-              <div className="stat-item">
-                <div className="stat-number">100%</div>
-                <div className="stat-label">Quality Guaranteed</div>
-              </div>
-            </div>
-            <div className="about-features">
-              <div className="feature-item">
-                <div className="feature-icon">
-                  <svg viewBox="0 0 24 24" className="icon">
-                    <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"
-                      fill="var(--primary)" />
-                  </svg>
-                </div>
-                <div className="feature-text">
-                  <h4>Certified Quality</h4>
-                  <p>ISO certified production facility</p>
-                </div>
-              </div>
-              <div className="feature-item">
-                <div className="feature-icon">
-                  <svg viewBox="0 0 24 24" className="icon">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
-                      fill="var(--primary)" />
-                  </svg>
-                </div>
-                <div className="feature-text">
-                  <h4>Trusted Brand</h4>
-                  <p>Leading water provider in the region</p>
-                </div>
-              </div>
+        {/* Main Heading */}
+        <div className="about-header">
+          <h2 className="about-title">About Greb Water</h2>
+        </div>
+
+        {/* Image and Subtitle Side by Side */}
+        <div className="about-intro">
+          <div className="about-intro-image">
+            <div className="about-image-container">
+              <img src={GrebImage} alt="Greb Water Facility" className="about-image" />
             </div>
           </div>
-          <div className="about-image">
-            <div className="image-container">
-              <div className="water-factory">
-                <svg viewBox="0 0 400 300" className="factory-svg">
-                  <defs>
-                    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                      <stop offset="0%" stopColor="#E3F2FD" />
-                      <stop offset="100%" stopColor="#BBDEFB" />
-                    </linearGradient>
-                    <linearGradient id="buildingGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                      <stop offset="0%" stopColor="#F5F5F5" />
-                      <stop offset="100%" stopColor="#E0E0E0" />
-                    </linearGradient>
-                  </defs>
-                  <rect width="400" height="200" fill="url(#skyGradient)" />
-                  <rect x="50" y="120" width="80" height="120" fill="url(#buildingGradient)" />
-                  <rect x="150" y="100" width="100" height="140" fill="url(#buildingGradient)" />
-                  <rect x="270" y="110" width="80" height="130" fill="url(#buildingGradient)" />
-                  <rect x="175" y="60" width="50" height="40" fill="var(--primary)" />
-                  <circle cx="90" cy="150" r="8" fill="#90CAF9" />
-                  <circle cx="90" cy="180" r="8" fill="#90CAF9" />
-                  <circle cx="90" cy="210" r="8" fill="#90CAF9" />
-                  <circle cx="200" cy="130" r="8" fill="#90CAF9" />
-                  <circle cx="200" cy="160" r="8" fill="#90CAF9" />
-                  <circle cx="200" cy="190" r="8" fill="#90CAF9" />
-                  <circle cx="310" cy="140" r="8" fill="#90CAF9" />
-                  <circle cx="310" cy="170" r="8" fill="#90CAF9" />
-                  <circle cx="310" cy="200" r="8" fill="#90CAF9" />
-                  <path d="M175,40 Q200,20 225,40" stroke="var(--primary)" strokeWidth="3" fill="none" />
-                  <circle cx="200" cy="30" r="4" fill="var(--primary)" />
-                </svg>
-              </div>
-              <div className="floating-elements">
-                <div className="water-drop drop-1"></div>
-                <div className="water-drop drop-2"></div>
-                <div className="water-drop drop-3"></div>
-              </div>
+          <div className="about-intro-text">
+            <h3 className="about-subtitle-heading">Our company was founded in 2022</h3>
+            <p className="about-subtitle-main">
+              Greb Water produces NAFDAC-registered sachet and bottled water, committed to clean, safe, and affordable drinking water across Nigeria.
+            </p>
+            <p className="about-subtitle-remaining">
+              Guided by Hygiene, Utility, and Service, we deliver quality water to homes, retailers, offices, and bulk buyers with dependable distribution and strict quality standards.
+            </p>
+          </div>
+        </div>
+
+        {/* Core Values and Compliance Badge - Written Content with Vertical Lines */}
+        <div className={`values-written-container ${valuesVisible ? 'visible' : ''}`}>
+          <div className={`value-item-written ${valuesVisible ? 'visible' : ''}`}>
+            <div className="value-icon-written">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div className="value-content-written">
+              <h4 className="value-title-written">Hygiene</h4>
+              <p className="value-description-written">
+                Strict quality control and NAFDAC compliance ensure every drop is pure and safe.
+              </p>
             </div>
           </div>
+
+          <div className="vertical-divider"></div>
+
+          <div className={`value-item-written ${valuesVisible ? 'visible' : ''}`}>
+            <div className="value-icon-written">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
+              </svg>
+            </div>
+            <div className="value-content-written">
+              <h4 className="value-title-written">Utility</h4>
+              <p className="value-description-written">
+                Affordable sachet and bottled water making clean hydration accessible to everyone.
+              </p>
+            </div>
+          </div>
+
+          <div className="vertical-divider"></div>
+
+          <div className={`value-item-written ${valuesVisible ? 'visible' : ''}`}>
+            <div className="value-icon-written">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
+            <div className="value-content-written">
+              <h4 className="value-title-written">Service</h4>
+              <p className="value-description-written">
+                Reliable distribution and prompt delivery ensuring consistent water supply.
+              </p>
+            </div>
+          </div>
+
+          <div className="vertical-divider"></div>
+
+          <div className={`value-item-written ${valuesVisible ? 'visible' : ''}`}>
+            <div className="value-icon-written">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+            </div>
+            <div className="value-content-written">
+              <h4 className="value-title-written">NAFDAC Registered</h4>
+              <p className="value-description-written">
+                Fully compliant with national standards for water quality and safety
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* CSR Section */}
+        <div className="csr-section">
+          <h3 className="csr-title">Community Commitment</h3>
+          <p className="csr-description">
+            Beyond water production, we're dedicated to empowering our community through
+            youth education initiatives, digital skills training programs, and technology
+            access projects. We believe in creating sustainable impact that extends
+            beyond our business to nurture the next generation of leaders and innovators.
+          </p>
         </div>
       </div>
     </section>
