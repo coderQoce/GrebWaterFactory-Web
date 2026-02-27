@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
-import SachetImage from '../assets/images/BT.jpg';
-import BottledImage from '../assets/images/BT.jpg';
-import BottleProductionImage from '../assets/images/BT.jpg';
-import LabelMakerImage from '../assets/images/BT.jpg';
+import SachetImage from '../assets/images/BT4.jpg';
+import BottledImage from '../assets/images/BT2.jpg';
+import BottleProductionImage from '../assets/images/BT3.jpg';
+import LabelMakerImage from '../assets/images/BT1.jpg';
 import './Products.css';
 
 const Products = () => {
@@ -82,9 +82,9 @@ const Products = () => {
       name: 'Sachet Water',
       category: 'sachet',
       description: 'Pure refreshment in every sip',
-      fullDescription: 'Convenient 250ml sachets perfect for events, offices, and everyday hydration. Our sachets are produced under strict quality controls.',
+      fullDescription: 'Convenient 50cl sachets perfect for events, offices, and everyday hydration. Our sachets are produced under strict quality controls.',
       image: SachetImage,
-      specs: ['250ml volume', 'Food-grade material', '100 sachets/pack'],
+      specs: ['50cl volume', 'Food-grade material', '20 sachets/pack'],
 
     },
     {
@@ -92,9 +92,9 @@ const Products = () => {
       name: 'Premium Bottled',
       category: 'bottled',
       description: 'Crystal clear bottled water',
-      fullDescription: 'Premium quality water in BPA-free bottles. Available in 500ml and 1L sizes for your daily hydration needs.',
+      fullDescription: 'Premium quality water in BPA-free bottles. Available in 75cl  for your daily hydration needs.',
       image: BottledImage,
-      specs: ['500ml & 1L options', 'BPA-free', 'Recyclable'],
+      specs: ['75cl', 'BPA-free', 'Recyclable'],
 
     },
     {
@@ -109,7 +109,7 @@ const Products = () => {
     },
     {
       id: 4,
-      name: 'Label Design Studio',
+      name: 'Label Designing',
       category: 'labels',
       description: 'Professional label printing',
       fullDescription: 'Stand out with our custom label design and printing services. We create eye-catching designs that tell your brand story.',
@@ -132,7 +132,7 @@ const Products = () => {
     : products.filter(product => product.category === activeFilter);
 
   const handleInquiry = (productName) => {
-    const phoneNumber = '2348012345678';
+    const phoneNumber = '2348107977077';
     const message = encodeURIComponent(`Hello, I'm interested in your ${productName}. Please provide more information.`);
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
   };

@@ -37,7 +37,7 @@ const Contact = () => {
         </svg>
       ),
       label: "Email Us",
-      value: "hello@grebwater.com",
+      value: "grebwater@gmail.com",
       action: "Send email"
     },
     {
@@ -47,7 +47,17 @@ const Contact = () => {
         </svg>
       ),
       label: "Call Us",
-      value: "+234 801 234 5678",
+      value: "+234 906 498 2269",
+      action: "Request call"
+    },
+    {
+      icon: (
+        <svg viewBox="0 0 24 24" className="method-icon">
+          <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="currentColor" />
+        </svg>
+      ),
+      label: "Alternative Line",
+      value: "+234 915 770 7558",
       action: "Request call"
     },
     {
@@ -147,7 +157,7 @@ const Contact = () => {
                     value={formData.phone}
                     onChange={handleChange}
                     className="field-input"
-                    placeholder="+234 801 234 5678"
+                    placeholder="+234 810 797 7077"
                   />
                 </div>
 

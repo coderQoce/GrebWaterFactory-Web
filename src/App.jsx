@@ -3,8 +3,9 @@ import Hero from './components/Hero';
 import About from './components/About';
 import MeetDirector from './components/MeetDirector';
 import Products from './components/Products';
+import Facilities from './components/Facilities';
 import Delivery from './components/Delivery';
-import CustomerFeedback from './components/CustomerFeedback';
+// import CustomerFeedback from './components/CustomerFeedback';
 import CSR from './components/CSR';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -18,8 +19,9 @@ function App() {
         <About />
         <MeetDirector />
         <Products />
+        <Facilities />
         <Delivery />
-        <CustomerFeedback />
+        {/* <CustomerFeedback /> */}
         <CSR />
         <Contact />
       </main>

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import DeliveryTruck from '../assets/images/BT.jpg';
+import DeliveryTruck from '../assets/images/car.jpg';
 import './Delivery.css';
 
 const Delivery = () => {
@@ -25,13 +25,13 @@ const Delivery = () => {
 
   const deliveryFeatures = [
     {
-      text: "Fast delivery within 2-4 hours"
+      text: "Fast delivery"
     },
     {
-      text: "Free delivery on orders above ₦10,000"
+      text: "Door to Door Delivery"
     },
     {
-      text: "Real-time tracking available"
+      text: "Relaible Delivery"
     }
   ];
 
