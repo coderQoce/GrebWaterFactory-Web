@@ -16,17 +16,31 @@ const Contact = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate API call
-    setTimeout(() => {
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', phone: '', message: '' });
-      setIsSubmitting(false);
-      setTimeout(() => setSubmitStatus(''), 3000);
-    }, 1500);
+    // Create Gmail mailto link with form details
+    const subject = encodeURIComponent(`New Contact Form Submission from ${formData.name}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\n` +
+      `Email: ${formData.email}\n` +
+      `Phone: ${formData.phone || 'Not provided'}\n\n` +
+      `Message:\n${formData.message}\n\n` +
+      `---\n` +
+      `This message was sent from the GrebWater contact form.`
+    );
+
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=grebwater@gmail.com&su=${subject}&body=${body}`;
+
+    // Open Gmail in a new tab
+    window.open(gmailUrl, '_blank');
+
+    // Show success message and reset form
+    setSubmitStatus('success');
+    setFormData({ name: '', email: '', phone: '', message: '' });
+    setIsSubmitting(false);
+    setTimeout(() => setSubmitStatus(''), 3000);
   };
 
   const contactMethods = [
