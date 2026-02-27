@@ -1,4 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
+import Purewatermachine from '../assets/images/Purewatermachine.jpg';
+import Waterfilter from '../assets/images/Waterfilter.jpg';
+import BottledWaterMachine from '../assets/images/BottledWaterMachine.jpg';
+import BottledWaterMachine2 from '../assets/images/BottledWaterMachine2.jpg';
+import BottledWaterMachine3 from '../assets/images/BottledWaterMachine3.jpg';
+import BottledWaterMachine4 from '../assets/images/BottledWaterMachine4.jpg';
 import './Facilities.css';
 
 const Facilities = () => {
@@ -25,39 +31,39 @@ const Facilities = () => {
   const facilities = [
     {
       id: 1,
-      title: "Modern Production Line",
-      image: "/images/facility-1.jpg",
+      title: "Sachet Water Machine",
+      image: Purewatermachine,
       category: "production"
     },
     {
       id: 2,
-      title: "Quality Control Lab",
-      image: "/images/facility-2.jpg",
-      category: "quality"
+      title: "Water Filters",
+      image: Waterfilter,
+      category: "filtration"
     },
     {
       id: 3,
-      title: "Packaging Department",
-      image: "/images/facility-3.jpg",
-      category: "packaging"
+      title: "Bottled Water Machine",
+      image: BottledWaterMachine,
+      category: "bottling"
     },
     {
       id: 4,
-      title: "Storage & Distribution",
-      image: "/images/facility-4.jpg",
-      category: "storage"
+      title: " Bottled Water Machine",
+      image: BottledWaterMachine2,
+      category: "bottling"
     },
     {
       id: 5,
-      title: "Water Treatment Plant",
-      image: "/images/facility-5.jpg",
-      category: "treatment"
+      title: "Bottlled Water Machine",
+      image: BottledWaterMachine3,
+      category: "bottling"
     },
     {
       id: 6,
-      title: "Label Printing Unit",
-      image: "/images/facility-6.jpg",
-      category: "printing"
+      title: "Bottled Water Machine",
+      image: BottledWaterMachine4,
+      category: "quality"
     }
   ];
   return (

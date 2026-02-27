@@ -120,11 +120,7 @@ const Products = () => {
   ];
 
   const filters = [
-    { value: 'all', label: 'All Products' },
-    { value: 'sachet', label: 'Sachet' },
-    { value: 'bottled', label: 'Bottled' },
-    { value: 'manufacturing', label: 'Manufacturing' },
-    { value: 'labels', label: 'Labels' }
+    { value: 'all', label: 'All Products' }
   ];
 
   const filteredProducts = activeFilter === 'all'

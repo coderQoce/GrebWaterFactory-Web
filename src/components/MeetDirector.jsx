@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import d1Image from '../assets/images/d1.jpg';
+import d2Image from '../assets/images/d2.jpg';
+import d3Image from '../assets/images/d3.jpg';
 import './MeetDirector.css';
 
 const MeetDirector = () => {
@@ -19,21 +22,22 @@ const MeetDirector = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
   const directors = [
     {
-      name: "Alexander Thompson",
-      title: "Director",
-      bio: "With over 20 years of experience in the water industry, Alexander leads GrebWater's vision for clean, accessible water solutions, driving innovation and sustainable growth across the company."
+      name: "Oluwagbemiga A. Omotosho",
+      title: "Chief Executive Officer",
+      image: d1Image
     },
     {
-      name: "Sarah Johnson",
-      title: "Director",
-      bio: "Sarah brings 15 years of operational excellence, optimizing our production and distribution systems to ensure efficient delivery while maintaining the highest quality standards."
+      name: "Ephraim A. Omotosho",
+      title: "Director of Comms. & Logistics",
+      image: d2Image
     },
     {
-      name: "Michael Chen",
-      title: "Director",
-      bio: "Michael is a water treatment specialist with 12 years of experience, developing innovative purification technologies and ensuring 100% NAFDAC compliance."
+      name: "Boaz A. Omotosho",
+      title: "Director of Operations",
+      image: d3Image
     }
   ];
 
@@ -54,7 +58,16 @@ const MeetDirector = () => {
               <div className={`director-card ${directorsVisible ? 'visible' : ''}`}>
                 <div className="director-image">
                   <div className="director-photo">
-                    <svg viewBox="0 0 300 300" className="director-avatar">
+                    <img
+                      src={director.image}
+                      alt={director.name}
+                      className="director-img"
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                        e.target.nextSibling.style.display = 'block';
+                      }}
+                    />
+                    <svg viewBox="0 0 300 300" className="director-avatar" style={{ display: 'none' }}>
                       <defs>
                         <linearGradient id={`avatarGradient${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
                           <stop offset="0%" stopColor="#E3F2FD" />
@@ -72,10 +85,6 @@ const MeetDirector = () => {
                 <div className="director-info">
                   <h3 className="director-name">{director.name}</h3>
                   <p className="director-title">{director.title}</p>
-
-                  <div className="director-bio">
-                    <p>{director.bio}</p>
-                  </div>
                 </div>
               </div>
               {index < directors.length - 1 && <div className="director-divider"></div>}

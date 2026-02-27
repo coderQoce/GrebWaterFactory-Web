@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Navbar.css';
+import './Footer.css';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -50,9 +51,9 @@ const Navbar = () => {
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''} ${isFixed ? 'fixed' : ''}`}>
       <div className="container">
         <div className="nav-content">
-          <div className="nav-logo">
-            <h2 className="logo-text">GrebWater</h2>
-          </div>
+           <div className="brand-header">
+              <h2 className="brand-name">Greb<span className="brand-accent">Water</span></h2>
+            </div>
 
           <div className="nav-menu">
             <ul className="nav-list">
@@ -76,11 +77,11 @@ const Navbar = () => {
                   Delivery
                 </a>
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <a href="#customer-feedback" className="nav-link" onClick={(e) => { e.preventDefault(); scrollToSection('customer-feedback'); }}>
                   Customer Feedback
                 </a>
-              </li>
+              </li> */}
               <li className="nav-item">
                 <a href="#csr" className="nav-link" onClick={(e) => { e.preventDefault(); scrollToSection('csr'); }}>
                   CSR
