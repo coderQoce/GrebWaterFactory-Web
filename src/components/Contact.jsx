@@ -20,7 +20,7 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Create Gmail mailto link with form details
+    // Create mailto link for default mail app
     const subject = encodeURIComponent(`New Contact Form Submission from ${formData.name}`);
     const body = encodeURIComponent(
       `Name: ${formData.name}\n` +
@@ -31,10 +31,10 @@ const Contact = () => {
       `This message was sent from the GrebWater contact form.`
     );
 
-    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=grebwater@gmail.com&su=${subject}&body=${body}`;
+    const mailtoUrl = `mailto:grebwater@gmail.com?subject=${subject}&body=${body}`;
 
-    // Open Gmail in a new tab
-    window.open(gmailUrl, '_blank');
+    // Open default mail app
+    window.location.href = mailtoUrl;
 
     // Show success message and reset form
     setSubmitStatus('success');
