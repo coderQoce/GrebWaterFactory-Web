@@ -1,154 +1,156 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './CSR.css';
 
-const CSR = () => {
-  const csrInitiatives = [
-    {
-      icon: (
-        <svg viewBox="0 0 24 24" className="initiative-icon">
-          <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z" 
-                fill="currentColor" />
-        </svg>
-      ),
-      title: "Education Support",
-      description: "Providing educational resources and scholarships to underprivileged children in our communities"
-    },
-    {
-      icon: (
-        <svg viewBox="0 0 24 24" className="initiative-icon">
-          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" 
-                fill="currentColor" />
-        </svg>
-      ),
-      title: "Digital Training",
-      description: "Empowering teenagers with digital skills and technology training for future opportunities"
-    },
-    {
-      icon: (
-        <svg viewBox="0 0 24 24" className="initiative-icon">
-          <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" 
-                fill="currentColor" />
-        </svg>
-      ),
-      title: "Youth Empowerment",
-      description: "Creating leadership programs and mentorship opportunities for young adults"
-    },
-    {
-      icon: (
-        <svg viewBox="0 0 24 24" className="initiative-icon">
-          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" 
-                fill="currentColor" />
-        </svg>
-      ),
-      title: "Community Development",
-      description: "Supporting local infrastructure and community projects that benefit children and families"
-    }
-  ];
+const useInView = (threshold = 0.12) => {
+  const ref = useRef(null);
+  const [inView, setInView] = useState(false);
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setInView(true); observer.disconnect(); } },
+      { threshold }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [threshold]);
+  return [ref, inView];
+};
 
-  const impactStats = [
-    { number: "5,000+", label: "Children Educated" },
-    { number: "50+", label: "Digital Training Centers" },
-    { number: "10,000+", label: "Youth Empowered" },
-    { number: "25+", label: "Community Projects" }
-  ];
+const cards = [
+  {
+    num: '01',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" className="csr-card-icon">
+        <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+        <path d="M6 12v5c3 3 9 3 12 0v-5" />
+      </svg>
+    ),
+    title: 'Education Support',
+    description: 'Providing academic resources and school support for children in underserved communities.',
+  },
+  {
+    num: '02',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" className="csr-card-icon">
+        <circle cx="12" cy="7" r="4" />
+        <path d="M5.5 20a6.5 6.5 0 0113 0" />
+        <path d="M16 11l2 2 4-4" />
+      </svg>
+    ),
+    title: 'Youth Empowerment',
+    description: 'Building skills, confidence, and real opportunity pathways for teenagers.',
+  },
+  {
+    num: '03',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" className="csr-card-icon">
+        <rect x="2" y="3" width="20" height="13" rx="2" />
+        <path d="M8 21h8M12 17v4" />
+        <path d="M7 8h4M7 12h10" />
+      </svg>
+    ),
+    title: 'Digital Training',
+    description: 'Equipping young people with foundational tech and digital literacy skills.',
+  },
+];
+
+const CSR = () => {
+  const [headerRef, headerInView] = useInView(0.2);
+  const [introRef, introInView] = useInView(0.1);
+  const [cardsRef, cardsInView] = useInView(0.08);
+  const [highlightRef, highlightInView] = useInView(0.1);
+  const [closingRef, closingInView] = useInView(0.2);
 
   return (
-    <section id="csr" className="csr section">
-      <div className="container">
-        <div className="section-header text-center">
-          <h2 className="section-title">CSR & Philanthropy</h2>
-          <div className="section-divider center"></div>
-          <p className="section-subtitle">
-            Our commitment to creating positive change in society
+    <section id="csr" className="csr-section">
+
+      {/* Header */}
+      <div className="csr-container">
+        <div ref={headerRef} className={`csr-header csr-fade ${headerInView ? 'csr-visible' : ''}`}>
+          <span className="csr-eyebrow">Corporate Social Responsibility</span>
+          <h2 className="csr-title">Giving Back,<br /><span>Structured &amp; Sustained</span></h2>
+          <p className="csr-header-sub">
+            Beyond clean water  Greb Water is committed to building stronger communities,
+            one initiative at a time.
           </p>
         </div>
 
-        <div className="csr-intro">
-          <div className="intro-content">
-            <h3 className="intro-title">Building a Better Future Together</h3>
-            <p className="intro-description">
-              At GrebWater, we believe that businesses have a responsibility to contribute positively to society. 
-              In the next few years, we have set ambitious goals to make a meaningful impact, especially in the lives 
-              of children and teenagers. Our focus areas include education, empowerment, and digital training - 
-              essential pillars for building a sustainable and prosperous future.
+        {/* Two-column intro */}
+        <div ref={introRef} className={`csr-intro csr-fade ${introInView ? 'csr-visible' : ''}`}>
+          <div className="csr-intro-left">
+            <h3 className="csr-intro-heading">Why CSR matters to us</h3>
+            <p className="csr-intro-text">
+              Access to clean water and responsibility to communities go hand in hand.
+              Under the Greb and Sons Enterprises umbrella, our CSR programmes are
+              structured, purposeful, and built for lasting impact  not one-time gestures.
             </p>
-            <p className="intro-description">
-              Through our CSR initiatives, we aim to bridge gaps, create opportunities, and empower the next generation 
-              with the tools they need to succeed in an increasingly digital world.
+            <p className="csr-intro-text">
+              Our focus is deliberate: children and teenagers, because investing in
+              the next generation is how businesses grow <em>with</em> their communities.
             </p>
+          </div>
+          <div className="csr-intro-right">
+            <div className="csr-stat-block">
+              <div className="csr-stat">
+                <span className="csr-stat-num">3</span>
+                <span className="csr-stat-label">Active Programmes</span>
+              </div>
+              <div className="csr-stat">
+                <span className="csr-stat-num">100%</span>
+                <span className="csr-stat-label">Community-Focused</span>
+              </div>
+              <div className="csr-stat">
+                <span className="csr-stat-num">∞</span>
+                <span className="csr-stat-label">Long-term Commitment</span>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="impact-stats">
-          {impactStats.map((stat, index) => (
-            <div key={index} className="impact-stat">
-              <div className="stat-number">{stat.number}</div>
-              <div className="stat-label">{stat.label}</div>
-            </div>
+        {/* Cards */}
+        <div ref={cardsRef} className={`csr-cards ${cardsInView ? 'csr-visible' : ''}`}>
+          {cards.map((card, i) => (
+            <article
+              key={i}
+              className="csr-card csr-fade"
+              style={{ transitionDelay: `${i * 0.13}s` }}
+            >
+              <div className="csr-card-top">
+                <span className="csr-card-num">{card.num}</span>
+                <div className="csr-card-icon-wrap">{card.icon}</div>
+              </div>
+              <h3 className="csr-card-title">{card.title}</h3>
+              <p className="csr-card-desc">{card.description}</p>
+              <div className="csr-card-line" />
+            </article>
           ))}
         </div>
+      </div>
 
-        <div className="csr-initiatives">
-          <h3 className="initiatives-title">Our Key Initiatives</h3>
-          <div className="initiatives-grid">
-            {csrInitiatives.map((initiative, index) => (
-              <div key={index} className="initiative-card">
-                <div className="initiative-icon-wrapper">
-                  {initiative.icon}
-                </div>
-                <div className="initiative-content">
-                  <h4 className="initiative-title">{initiative.title}</h4>
-                  <p className="initiative-description">{initiative.description}</p>
-                </div>
-              </div>
-            ))}
+      {/* Full-width highlight */}
+      <div ref={highlightRef} className={`csr-highlight csr-fade ${highlightInView ? 'csr-visible' : ''}`}>
+        <div className="csr-highlight-inner">
+          <div className="csr-highlight-text-block">
+            <h2 className="csr-highlight-heading">A Structured Approach<br />to Giving Back</h2>
+            <p className="csr-highlight-body">
+              Our CSR is not about one-time donations. Every initiative under Greb and Sons
+              Enterprises is tracked, evaluated, and improved  designed to scale alongside
+              the business and deliver measurable community impact.
+            </p>
           </div>
-        </div>
-
-        <div className="csr-vision">
-          <div className="vision-content">
-            <h3 className="vision-title">Our Vision for the Future</h3>
-            <div className="vision-points">
-              <div className="vision-point">
-                <div className="point-number">01</div>
-                <div className="point-content">
-                  <h4>Education for All</h4>
-                  <p>Ensure every child in our communities has access to quality education and learning resources</p>
-                </div>
-              </div>
-              <div className="vision-point">
-                <div className="point-number">02</div>
-                <div className="point-content">
-                  <h4>Digital Literacy</h4>
-                  <p>Equip teenagers with essential digital skills to thrive in the modern economy</p>
-                </div>
-              </div>
-              <div className="vision-point">
-                <div className="point-number">03</div>
-                <div className="point-content">
-                  <h4>Sustainable Communities</h4>
-                  <p>Build self-sufficient communities through education, empowerment, and opportunity creation</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="csr-cta">
-          <h3 className="cta-title">Join Us in Making a Difference</h3>
-          <p className="cta-description">
-            Together, we can create lasting change and build a brighter future for the next generation
-          </p>
-          <div className="cta-buttons">
-            <button className="btn btn-primary btn-large">
-              Partner With Us
-            </button>
-            <button className="btn btn-outline btn-large">
-              Learn More
-            </button>
-          </div>
+          <a href="#contact" className="csr-highlight-btn">Partner With Us</a>
         </div>
       </div>
+
+      {/* Closing */}
+      <div className="csr-container">
+        <div ref={closingRef} className={`csr-closing csr-fade ${closingInView ? 'csr-visible' : ''}`}>
+          <blockquote className="csr-closing-quote">
+            "Businesses should grow <em>with</em> their communities  not apart from them."
+          </blockquote>
+          <p className="csr-closing-attr">— Greb and Sons Enterprises</p>
+        </div>
+      </div>
+
     </section>
   );
 };
