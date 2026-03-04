@@ -5,7 +5,7 @@
   left: 0;
   width: 100%;
   background: transparent;
-  z-index: 999999;
+  z-index: 9999999;
   transition: all 0.3s ease;
   padding: 1rem 0;
   height: auto;
@@ -22,7 +22,7 @@
   padding: 0.3rem 0;
   height: auto;
   min-height: fit-content;
-  z-index: 999999;
+  z-index: 9999999;
 }
 
 .navbar.fixed {
@@ -30,7 +30,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 999999;
+  z-index: 9999999;
 }
 
 /* Ensure hero section is behind navbar */
