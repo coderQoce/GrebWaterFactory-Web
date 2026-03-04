@@ -140,6 +140,15 @@
   margin-bottom: 8px;
 }
 
+.method-note {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #64748b;
+  font-style: italic;
+  margin-bottom: 6px;
+  display: block;
+}
+
 .method-action {
   background: none;
   border: none;

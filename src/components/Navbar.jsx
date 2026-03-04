@@ -102,6 +102,7 @@ const Navbar = () => {
         </div>
       </div>
 
+      <div className={`mobile-menu-overlay ${isMenuOpen ? 'active' : ''}`} onClick={closeMenu} />
       <div className={`mobile-menu ${isMenuOpen ? 'open' : ''}`}>
         <div className="mobile-menu-content">
           {/* Mobile Brand Logo */}
@@ -128,11 +129,6 @@ const Navbar = () => {
             <li className="mobile-nav-item">
               <a href="#delivery" className="mobile-nav-link" onClick={(e) => { e.preventDefault(); scrollToSection('delivery'); }}>
                 Delivery
-              </a>
-            </li>
-            <li className="mobile-nav-item">
-              <a href="#customer-feedback" className="mobile-nav-link" onClick={(e) => { e.preventDefault(); scrollToSection('customer-feedback'); }}>
-                Customer Feedback
               </a>
             </li>
             <li className="mobile-nav-item">

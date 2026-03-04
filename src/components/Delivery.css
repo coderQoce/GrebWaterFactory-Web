@@ -146,7 +146,11 @@
   font-size: 3.5rem;
   font-weight: 800;
   margin-bottom: 0;
-  color: #1e293b;
+  background: linear-gradient(135deg, #1a6fc4 0%, #0ea5e9 50%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 1px 4px rgba(14, 165, 233, 0.25));
   line-height: 1.1;
   opacity: 0;
   transform: translateY(20px);
@@ -159,11 +163,12 @@
 }
 
 .title-blue {
-  color: #4682B4;
-  background: linear-gradient(135deg, #4682B4, #87CEEB);
+  color: #1a6fc4;
+  background: linear-gradient(135deg, #1a6fc4 0%, #0ea5e9 50%, #06b6d4 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  filter: drop-shadow(0 1px 4px rgba(14, 165, 233, 0.25));
 }
 
 .delivery-description {

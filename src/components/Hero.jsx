@@ -59,7 +59,7 @@ const Hero = () => {
               <span className="title-portable">Portable Water</span>
             </h1>
             <p className="hero-subtitle">
-              A division of Greb and Sons Ventures, we provide long-lasting solutions to one of human's greatest need - clean and hygienic potable water.
+              A division of Greb and Sons Ventures, we provide long-lasting solutions to one of humanity's greatest needs — clean and hygienic potable water.
             </p>
             <div className="hero-buttons">
               <button

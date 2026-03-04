@@ -84,7 +84,7 @@ const Products = () => {
       description: 'Pure refreshment in every sip',
       fullDescription: 'Convenient 50cl sachets perfect for events, offices, and everyday hydration. Our sachets are produced under strict quality controls.',
       image: SachetImage,
-      specs: ['50cl volume', 'Food-grade material', '20 sachets/pack'],
+      specs: ['50cl volume', 'Food-grade material', '16 sachets/pack'],
 
     },
     {

@@ -49,13 +49,13 @@ const Facilities = () => {
     },
     {
       id: 4,
-      title: " Bottled Water Machine",
+      title: "Bottled Water Machine",
       image: BottledWaterMachine2,
       category: "bottling"
     },
     {
       id: 5,
-      title: "Bottlled Water Machine",
+      title: "Bottled Water Machine",
       image: BottledWaterMachine3,
       category: "bottling"
     },

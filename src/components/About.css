@@ -71,6 +71,7 @@
   color: #4682B4;
   margin-bottom: 15px;
   line-height: 1.3;
+  text-align: center;
 }
 
 .about-subtitle-main {
@@ -385,14 +386,14 @@
   line-height: 1.5;
 }
 
-/* CSR Section */
-.csr-section {
+/* CSR Block */
+.about-csr-block {
   text-align: center;
   max-width: 800px;
   margin: 0 auto;
 }
 
-.csr-title {
+.about-csr-title {
   font-family: 'Montserrat', sans-serif;
   font-size: 2rem;
   font-weight: 700;
@@ -400,7 +401,7 @@
   margin-bottom: 20px;
 }
 
-.csr-description {
+.about-csr-description {
   font-family: 'Montserrat', sans-serif;
   font-size: 1rem;
   font-weight: 400;
@@ -434,6 +435,8 @@
 
   .about-intro-text {
     order: 1;
+    text-align: center;
+    align-items: center;
   }
 
   .about-subtitle {
@@ -528,11 +531,11 @@
     font-size: 0.85rem;
   }
 
-  .csr-title {
+  .about-csr-title {
     font-size: 1.6rem;
   }
 
-  .csr-description {
+  .about-csr-description {
     font-size: 0.95rem;
   }
 }
@@ -555,12 +558,18 @@
     margin-bottom: 40px;
   }
 
+  .about-intro-text {
+    text-align: center;
+    align-items: center;
+  }
+
   .about-subtitle {
     font-size: 0.95rem;
   }
 
   .about-subtitle-heading {
     font-size: 1.3rem;
+    text-align: center;
   }
 
   .about-subtitle-main {

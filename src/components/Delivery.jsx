@@ -31,7 +31,7 @@ const Delivery = () => {
       text: "Door to Door Delivery"
     },
     {
-      text: "Relaible Delivery"
+      text: "Reliable Delivery"
     }
   ];
 
@@ -48,9 +48,7 @@ const Delivery = () => {
           <div className={`delivery-content ${isVisible ? 'visible' : ''}`}>
             <div className="delivery-header">
               <span className="delivery-subtitle">Premium Service</span>
-              <h2 className="delivery-title">
-                <span className="title-blue">Delivery</span> Service
-              </h2>
+              <h2 className="delivery-title">Delivery Service</h2>
             </div>
 
             <p className="delivery-description">

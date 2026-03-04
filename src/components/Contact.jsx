@@ -61,8 +61,9 @@ const Contact = () => {
         </svg>
       ),
       label: "Call Us",
-      value: "+234 906 498 2269",
-      action: "Request call"
+      value: "+234 810 797 7077",
+      action: "Request call",
+      href: "tel:+2348107977077"
     },
     {
       icon: (
@@ -72,7 +73,8 @@ const Contact = () => {
       ),
       label: "Alternative Line",
       value: "+234 915 770 7558",
-      action: "Request call"
+      action: "Request call",
+      href: "tel:+2349157707558"
     },
     {
       icon: (
@@ -82,7 +84,9 @@ const Contact = () => {
       ),
       label: "Visit Us",
       value: "Ibadan, Nigeria",
-      action: "Get directions"
+      note: "Nearest landmark: Redemptorist Liguori House Retreat Center, Ibadan",
+      action: "Get directions",
+      href: "https://maps.app.goo.gl/g6mkAzKCNyn4b5627?g_st=iw"
     }
   ];
 
@@ -117,7 +121,12 @@ const Contact = () => {
                     <div className="method-details">
                       <span className="method-label">{method.label}</span>
                       <span className="method-value">{method.value}</span>
-                      <button className="method-action">{method.action} →</button>
+                      {method.note && <span className="method-note">{method.note}</span>}
+                      {method.href ? (
+                        <a href={method.href} target="_blank" rel="noopener noreferrer" className="method-action">{method.action} →</a>
+                      ) : (
+                        <button className="method-action">{method.action} →</button>
+                      )}
                     </div>
                   </div>
                 ))}

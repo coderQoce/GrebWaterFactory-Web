@@ -145,9 +145,9 @@ const CSR = () => {
       <div className="csr-container">
         <div ref={closingRef} className={`csr-closing csr-fade ${closingInView ? 'csr-visible' : ''}`}>
           <blockquote className="csr-closing-quote">
-            "Businesses should grow <em>with</em> their communities  not apart from them."
+            "Businesses should grow <em>with</em> their communities — not apart from them."
           </blockquote>
-          <p className="csr-closing-attr">— Greb and Sons Enterprises</p>
+          <p className="csr-closing-attr">— CEO of Greb and Sons Enterprises</p>
         </div>
       </div>
 

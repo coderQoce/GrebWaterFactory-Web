@@ -121,9 +121,9 @@ const About = () => {
         </div>
 
         {/* CSR Section */}
-        <div className="csr-section">
-          <h3 className="csr-title">Community Commitment</h3>
-          <p className="csr-description">
+        <div className="about-csr-block">
+          <h3 className="about-csr-title">Community Commitment</h3>
+          <p className="about-csr-description">
             Beyond water production, we're dedicated to empowering our community through
             youth education initiatives, digital skills training programs, and technology
             access projects. We believe in creating sustainable impact that extends

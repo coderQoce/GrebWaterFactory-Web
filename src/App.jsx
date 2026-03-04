@@ -9,6 +9,7 @@ import Delivery from './components/Delivery';
 import CSR from './components/CSR';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 import './App.css';
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
       </main>
 
       <Footer />
+      <ScrollToTop />
     </div>
   );
 }
