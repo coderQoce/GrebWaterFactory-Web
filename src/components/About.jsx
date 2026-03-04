@@ -120,16 +120,6 @@ const About = () => {
           </div>
         </div>
 
-        {/* CSR Section */}
-        <div className="about-csr-block">
-          <h3 className="about-csr-title">Community Commitment</h3>
-          <p className="about-csr-description">
-            Beyond water production, we're dedicated to empowering our community through
-            youth education initiatives, digital skills training programs, and technology
-            access projects. We believe in creating sustainable impact that extends
-            beyond our business to nurture the next generation of leaders and innovators.
-          </p>
-        </div>
       </div>
     </section>
   );
